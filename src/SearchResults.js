@@ -5,7 +5,7 @@ const SearchResults = ({ movies }) => {
 
   return (
     <div>
-      {movies.length === 0 ? (
+      {!movies || movies.length === 0 ? (
         <h1>No Movies Found</h1>
       ) : (
         movies.map(movie => (
