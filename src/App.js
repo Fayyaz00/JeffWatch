@@ -47,9 +47,6 @@ function App() {
     User profile. Shows user's ratings. Also shows backlog, movies that the user wants to watch
     but hasn't yet. Users are able to rate movies and add to backlog from the Movie route.
 
-
-  Tenative API docs
-
 */
 
 export default App;
