@@ -3,22 +3,22 @@ import SearchResults from './SearchResults';
 
 const Search = () => {
   const placeholder = 'Search for a movie';
-  const apiKey = '3ebf8082'; //This is my omdb api key. I get 1000 requests per day. 
+  const apiKey = 'e9b51b88'; //omdb api key. 100,000 requests per day. 
   const [search, setSearch] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
 
-  async function requestMovies() {
+  const requestMovies = async () => {
     try {
-      const fetchResult = await fetch(`http://www.omdbapi.com/?s=${search}&apikey=${apiKey}`);
+      const result = await fetch(`http://www.omdbapi.com/?s=${search}&apikey=${apiKey}`);
       const resultJson = await fetchResult.json();
-      setIsLoaded(true);
       setMovies(resultJson.Search);
+      setIsLoaded(true);
     } catch (error) {
       setError(error);
     }
-  }
+  };
 
   return (
     <div>
