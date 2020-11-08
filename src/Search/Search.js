@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SearchResults from './SearchResults';
+import axios from "axios";
 
 const Search = () => {
   const placeholder = 'Search for a movie';
@@ -9,23 +10,28 @@ const Search = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
 
-  const requestMovies = async () => {
+
+  const movieRequest = async() => {
     try {
-      const result = await fetch(`http://www.omdbapi.com/?s=${search}&apikey=${apiKey}`);
-      const resultJson = await fetchResult.json();
-      setMovies(resultJson.Search);
+      const result = await axios({
+        method: 'get',
+        url: `http://www.omdbapi.com/?s=${search}&apikey=${apiKey}`,
+      });
+      
+      const resultjson = await result.data;
+      setMovies(resultjson.Search);
       setIsLoaded(true);
     } catch (error) {
       setError(error);
     }
-  };
+  }
 
   return (
     <div>
       <form 
         onSubmit={e => {
           e.preventDefault();
-          requestMovies();
+          movieRequest();
         }}
       >
         <label htmlFor="search">
