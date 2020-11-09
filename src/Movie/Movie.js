@@ -1,28 +1,70 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 
 
 // prechange
 // postchanges
 
-const Movie = () => {
+function Movie(props) {
+
+  const apikey = `e9b51b88`
+  const movieName = `Shrek`
+
+  // <Movie path="/movie/:id" />
+
+
+  const [movie, setMovie] = useState("");
+  const [movieId, setMovieId] = useState("");
 
 
 
+  React.useEffect(() => {
+    fetchMovie()
+    setMovieId(props.id)
+  }, [])
+
+  let i = 0;
 
   const fetchMovie = async () => {
+
     try {
-      const result = await fetch(`http://www.omdbapi.com/?s=${search}&apikey=${apiKey}`);
-      const resultJson = await fetchResult.json();
-      setIsLoaded(true);
-      setMovies(resultJson.Search);
+      const result = await axios({
+        method: 'get',
+        url: `http://www.omdbapi.com/?i=${props.id}&apikey=${apikey}`
+      })
+
+      console.log(`Movie JSON: ${JSON.stringify(result)}`);
+      setMovie(result.data)
+
+
+
     } catch (error) {
-      setError(error);
+      console.log(error);
     }
+
   };
 
-  return (
-    <div>
 
+
+
+
+  return (
+    <div className="movieContainer">
+      <h1>Movie</h1>
+
+      <div className="movie-title">
+        <h3>{movie.Title}</h3>
+      </div>
+
+      <div className="movie-poster">
+        <img src={movie.Poster} />
+      </div>
+
+      <div className="movie-body">
+        <p>{movie.Plot}</p>
+      </div>
+
+      <p>{`id: ${props.id}`}</p>
     </div>
   )
 };
