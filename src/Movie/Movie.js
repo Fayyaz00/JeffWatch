@@ -5,12 +5,9 @@ import React, { useState } from 'react';
 function Movie(props) {
 
   const apikey = `e9b51b88`
-  const movieName = `Shrek`
-
-  // <Movie path="/movie/:id" />
-
 
   const [movie, setMovie] = useState("");
+  const [plot, setPlot] = useState("Click to reveal plot")
 
 
   React.useEffect(() => {
@@ -43,19 +40,46 @@ function Movie(props) {
 
 
   return (
-    <div className="movieContainer">
-      <h1>Movie</h1>
+    <div style={
+      {
+        padding: "3.5%",
+        color: "black",
+        backgroundImage: "url(" + `https://media4.giphy.com/media/H4DjXQXamtTiIuCcRU/giphy.gif?cid=ecf05e47cfbn2m78dq1ov8ycabyq6kbyw0wsmmoliam0dt34&rid=giphy.gif` + ")"
+      }
 
-      <div className="movie-title">
-        <h3>{movie.Title}</h3>
+
+
+    } className="movieContainer">
+
+      <div className="movie-header">
+
+        <h1>{movie.Title}</h1>
+        <h6>{movie.Genre}</h6>
+        <h6>{movie.Released}</h6>
+
       </div>
 
       <div className="movie-poster">
+
         <img src={movie.Poster} />
+
       </div>
 
       <div className="movie-body">
-        <p>{movie.Plot}</p>
+
+        <p className="movie-director">{`Director: ${movie.Director}`}</p>
+        <p className="movie-writer">{`Writer: ${movie.Writer}`}</p>
+        <p className="movie-actors">{`Actors: ${movie.Actors}`}</p>
+        <p onClick={() => {
+          setPlot(movie.Plot)
+        }}>{plot}</p>
+
+      </div>
+
+      <div className="boring-labels">
+
+        <p>{`Country: ${movie.Country} Rated: ${movie.Rated}`}</p>
+
       </div>
 
       <p>{`id: ${props.id}`}</p>
