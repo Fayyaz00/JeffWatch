@@ -2,9 +2,6 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 
-// prechange
-// postchanges
-
 function Movie(props) {
 
   const apikey = `e9b51b88`
@@ -14,8 +11,6 @@ function Movie(props) {
 
 
   const [movie, setMovie] = useState("");
-  const [movieId, setMovieId] = useState("");
-
 
 
   React.useEffect(() => {
