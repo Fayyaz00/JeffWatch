@@ -15,7 +15,6 @@ function Movie(props) {
 
   React.useEffect(() => {
     fetchMovie()
-    setMovieId(props.id)
   }, [])
 
   let i = 0;
