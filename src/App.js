@@ -3,6 +3,7 @@ import { Router } from '@reach/router';
 import NavBar from './NavBar';
 import Search from './Search/Search';
 import Movie from './Movie/Movie';
+import Login from './Login/Login'
 import logo from './logo.svg';
 import './App.css';
 
@@ -10,10 +11,11 @@ function App() {
   return (
     <div id="app">
       <NavBar />
-      
+
       <Router>
         <Search path="/" />
         <Movie path="/movie/:id" />
+        <Login path="/login" />
         {/* <Chart path="/chart" /> */}
         {/* <Profile path="/:user" /> */}
       </Router>

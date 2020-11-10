@@ -7,6 +7,7 @@ const NavBar = () => {
       <nav>
         <Link to="/">JeffWatch</Link>
         <Link to="/">My Profile</Link>
+        <Link to="/login">Login Here</Link>
       </nav>
     </header>
   );
