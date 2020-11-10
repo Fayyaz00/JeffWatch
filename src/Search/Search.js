@@ -26,7 +26,8 @@ const Search = () => {
   }
 
   return (
-    <div>
+    <div className="center">
+      
       <form 
         onSubmit={e => {
           e.preventDefault();
@@ -34,21 +35,22 @@ const Search = () => {
         }}
       >
         <label htmlFor="search">
-          Movie
-          <input 
+          <input className="input is-info is-large is-rounded" 
             id="search" 
             placeholder={placeholder}
             value={search}
             onChange={e => setSearch(e.target.value)} 
           />
         </label>
-        <button>Search</button>
+        <button className="button is-info">Search</button>
+        
       </form>
       {isLoaded && <SearchResults movies={movies} />}
       {isLoading && <ClipLoader 
             size='150px'
             css={{display: 'block', margin: '0 auto'}}
           />}
+      
     </div>
   );
 }
