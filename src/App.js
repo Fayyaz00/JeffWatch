@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Router } from '@reach/router';
 import NavBar from './NavBar';
 import Search from './Search/Search';
 import Movie from './Movie/Movie';
 import Login from './Login/Login';
-import SignUp from './Login/SignUp'
+import SignUp from './Login/SignUp';
+import ratingsService from './services/ratings';
 import './App.css';
 
 function App() {
   const [user, setUser] = useState(null)
 
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedJeffUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+      ratingsService.setToken(user.token)
+    }
+  }, [])
+
   const handleLogin = (user) => {
     setUser(user)
+    ratingsService.setToken(user.token)
   }
 
   return (
