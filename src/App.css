@@ -82,3 +82,19 @@
   padding: 10px;
   margin-bottom: 10px;
 }
+
+.ratings {
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 2px;
+  padding-top: 0;
+  width: 140px;
+  display: flex;
+  flex-direction: row;
+}
+
+.ratings #rating-value {
+  padding-left: 10px;
+  width: 40px;
+  cursor: pointer;
+}

@@ -31,7 +31,7 @@ function App() {
 
       <Router>
         <Search path="/" />
-        <Movie path="/movie/:id" />
+        <Movie path="/movie/:id" user={user}/>
         <Login path="/login" handleLogin={handleLogin}/>
         <SignUp path="/signup" />
 
