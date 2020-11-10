@@ -34,14 +34,20 @@ const Search = () => {
           movieRequest();
         }}
       >
-        <label htmlFor="search">
-          <input className="input is-info is-large is-rounded" 
-            id="search" 
-            placeholder={placeholder}
-            value={search}
-            onChange={e => setSearch(e.target.value)} 
-          />
-        </label>
+        <div className="columns">
+          <div className="column is-two-thirds is-offset-2">
+            <div className="block">
+              <label htmlFor="search">
+                <input className="input is-info is-large is-rounded" 
+                  id="search" 
+                  placeholder={placeholder}
+                  value={search}
+                  onChange={e => setSearch(e.target.value)} 
+                />
+              </label>
+            </div>
+          </div>
+        </div>
         <button className="button is-info">Search</button>
         
       </form>
