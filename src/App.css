@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+#centered {
+  text-align: center;
+}
+
+#blue-text {
+}
+
+#blue-background {
+  /* background-color: lightblue; */
+}
+
+.poster-size {
+  height: 450px;
+  width: 300px;
+}

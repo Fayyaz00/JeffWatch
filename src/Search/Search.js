@@ -17,7 +17,6 @@ const Search = () => {
         method: 'get',
         url: `http://www.omdbapi.com/?s=${search}&apikey=${apiKey}`,
       });
-      
       const resultjson = await result.data;
       setMovies(resultjson.Search);
       setIsLoaded(true);
