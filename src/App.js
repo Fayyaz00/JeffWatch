@@ -35,7 +35,7 @@ function App() {
         <Login path="/login" handleLogin={handleLogin}/>
         <SignUp path="/signup" />
 
-        {/* <Chart path="/chart" /> */}
+        {/* <Charts path="/chart" /> */}
         {/* <Profile path="/:user" /> */}
       </Router>
     </div>
