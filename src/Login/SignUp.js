@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from '@reach/router';
 
-function Login() {
+function SignUp() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -15,8 +14,8 @@ function Login() {
     }
 
     return (
-        <div className="Login">
-            <h1>Login</h1>
+        <div className="SignUp">
+            <h1>Sign-Up</h1>
             <form onSubmit={handleSubmit}>
                 <div className="username-form">
                     <label>
@@ -45,11 +44,8 @@ function Login() {
                 <input type="submit" value="submit" />
 
             </form>
-
-
         </div>
     )
-
 }
 
-export default Login
+export default SignUp
