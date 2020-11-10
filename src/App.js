@@ -17,7 +17,7 @@ function App() {
         <Search path="/" />
         <Movie path="/movie/:id" />
         <Login path="/login" />
-        <SignUp path="/SignUp" />
+        <SignUp path="/signup" />
 
         {/* <Chart path="/chart" /> */}
         {/* <Profile path="/:user" /> */}
