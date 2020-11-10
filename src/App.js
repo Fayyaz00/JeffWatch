@@ -5,6 +5,8 @@ import Search from './Search/Search';
 import Movie from './Movie/Movie';
 import Login from './Login/Login';
 import SignUp from './Login/SignUp';
+import Profile from './Profile/Profile';
+import Charts from './Charts/Charts';
 import ratingsService from './services/ratings';
 import './App.css';
 
@@ -34,9 +36,8 @@ function App() {
         <Movie path="/movie/:id" user={user}/>
         <Login path="/login" handleLogin={handleLogin}/>
         <SignUp path="/signup" />
-
-        {/* <Charts path="/chart" /> */}
-        {/* <Profile path="/:user" /> */}
+        <Charts path="/charts" /> 
+        <Profile path="/user/:user" />
       </Router>
     </div>
   );
