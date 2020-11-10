@@ -41,6 +41,10 @@
   text-align: center;
 }
 
+.center {
+  text-align: center;
+}
+
 .movie-card {
   background-color: #f67280;
   border-radius: 25px;
