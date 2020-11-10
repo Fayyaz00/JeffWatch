@@ -18,29 +18,31 @@ function SignUp() {
       <form onSubmit={handleSubmit}>
         <div className="username-form">
           <label>
-            Username:
+            Username
             <input 
               type="text" 
+              value={username}
               name="username" 
-              onChange={(e) => setUsername(e.target.value)}
-              minLength="4" 
+              onChange={({ target }) => setUsername(target.value)}
+              minLength="3" 
               required 
             />
           </label>
         </div>
         <div className="password-form">
           <label>
-            Password:
+            Password
             <input 
-              type="password" 
+              type="password"
+              value={password}
               name="password" 
-              onChange={(e) => setPassword(e.target.value)} 
-              minLength="4" 
+              onChange={({ target }) => setPassword(target.value)} 
+              minLength="6" 
               required 
             />
           </label>
         </div>
-        <input type="submit" value="submit" />
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   )

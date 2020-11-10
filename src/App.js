@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Router } from '@reach/router';
 import NavBar from './NavBar';
 import Search from './Search/Search';
 import Movie from './Movie/Movie';
 import Login from './Login/Login';
 import SignUp from './Login/SignUp'
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [user, setUser] = useState(null)
+
+  const handleLogin = (user) => {
+    setUser(user)
+  }
+
   return (
     <div id="app">
-      <NavBar />
+      <NavBar user={user} />
 
       <Router>
         <Search path="/" />
         <Movie path="/movie/:id" />
-        <Login path="/login" />
+        <Login path="/login" handleLogin={handleLogin}/>
         <SignUp path="/signup" />
 
         {/* <Chart path="/chart" /> */}

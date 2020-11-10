@@ -1,28 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from '@reach/router';
+import React, { useState, useEffect } from 'react'
+import Notification from '../components/Notification'
+import loginService from '../services/login'
 
-function Login() {
+function Login(props) {
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [errorMessage, setErrorMessage] = useState(null)
 
+  const handleSubmit = async (event) => {
+    event.preventDefault()
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(`Username: ${username}`);
-    console.log(`Password: ${password}`);
+    try {
+      const user = await loginService.login({
+        username, password,
+      })
+      props.handleLogin(user)
+      setUsername('')
+      setPassword('')
+    } catch (exception) {
+      setErrorMessage('Wrong credentials')
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
+    }
   }
 
   return (
     <div className="Log-On">
+      <Notification message={errorMessage}/>
       <form onSubmit={handleSubmit}>
         <div className="username-form">
           <label>
             Username:
             <input 
-              type="text" 
+              type="text"
+              value={username}
               name="username" 
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={({ target }) => setUsername(target.value)}
               minLength="3" 
               required 
             />
@@ -32,19 +47,19 @@ function Login() {
           <label>
             Password:
             <input 
-              type="password" 
+              type="password"
+              value={password}
               name="password" 
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={({ target }) => setPassword(target.value)}
               minLength="6" 
               required 
             />
           </label>
         </div>
-        <input type="submit" value="submit" />
+        <button type="submit">login</button>
       </form>
     </div>
   )
-
 }
 
 export default Login

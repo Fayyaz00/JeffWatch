@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from '@reach/router';
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
+  console.log(user)
   return (
     <header>
       <nav className="navbar" role="navigation">
         <div className="navbar-brand">
-        <Link className="navbar-item" to="/">JeffWatch</Link>
-        <Link className="navbar-item" to="/">My Profile</Link>
-        <Link className="navbar-item" to="/login">Login</Link>
-        <Link className="navbar-item" to="/signup">Sign Up</Link>
+          <Link className="navbar-item" to="/">JeffWatch</Link>
+          {user && <Link className="navbar-item" to="/">My Profile</Link>}
+          {!user && <Link className="navbar-item" to="/login">Login</Link>}
+          {!user && <Link className="navbar-item" to="/signup">Sign Up</Link>}
         </div>
-
       </nav>
     </header>
   );
