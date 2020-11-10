@@ -41,30 +41,39 @@ function Movie(props) {
 
 
   return (
+    <div className="movie-card">
     <div style={
       {
         padding: "3.5%",
         color: "black",
-        backgroundImage: "url(" + `https://media4.giphy.com/media/H4DjXQXamtTiIuCcRU/giphy.gif?cid=ecf05e47cfbn2m78dq1ov8ycabyq6kbyw0wsmmoliam0dt34&rid=giphy.gif` + ")"
+        //backgroundImage: "url(" + `https://media4.giphy.com/media/H4DjXQXamtTiIuCcRU/giphy.gif?cid=ecf05e47cfbn2m78dq1ov8ycabyq6kbyw0wsmmoliam0dt34&rid=giphy.gif` + ")"
       }
 
 
 
     } className="movieContainer">
 
+      <div className="columns">
+
+      <div className="column is-one-third">
+
+      <div className="movie-poster">
+      <img src={movie.Poster} />
+      </div>
+
+      </div>
+
+      
+      <div className="column" id="meta-div">
       <div className="movie-header">
 
-        <h1>{movie.Title}</h1>
-        <h6>{movie.Genre}</h6>
+        <h1 className="title">{movie.Title}</h1>
+        <h6 className="subtitle">{movie.Genre}</h6>
         <h6>{movie.Released}</h6>
 
       </div>
 
-      <div className="movie-poster">
-
-        <img src={movie.Poster} />
-
-      </div>
+      <div className="is-family-sans-serif">
 
       <div className="movie-body">
 
@@ -84,6 +93,10 @@ function Movie(props) {
       </div>
 
       <p>{`id: ${props.id}`}</p>
+      </div>
+      </div>
+      </div>
+    </div>
     </div>
   )
 };

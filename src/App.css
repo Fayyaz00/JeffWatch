@@ -41,11 +41,29 @@
   text-align: center;
 }
 
-#blue-text {
+.movie-card {
+  background-color: #f67280;
+  border-radius: 25px;
+  height: 500px;
+  width: 900px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.align-right {
+  text-align: right;
 }
 
 #blue-background {
   /* background-color: lightblue; */
+}
+
+#meta-div {
+  background-color: #f8b195;
+  border-radius: 25px;
 }
 
 .poster-size {
