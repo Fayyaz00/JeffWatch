@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from '@reach/router';
 
 const NavBar = ({ user }) => {
-  console.log(user)
   return (
     <header>
       <nav className="navbar" role="navigation">
