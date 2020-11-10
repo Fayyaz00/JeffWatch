@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Notification from '../components/Notification'
 import loginService from '../services/login'
-import ratingsService from '../services/ratings'
 
 function Login(props) {
 
@@ -13,13 +12,9 @@ function Login(props) {
     event.preventDefault()
 
     try {
-      const user = await loginService.login({
-        username, password,
-      })
+      const user = await loginService.login({ username, password })
 
-      window.localStorage.setItem(
-        'loggedJeffUser', JSON.stringify(user)
-      )
+      window.localStorage.setItem('loggedJeffUser', JSON.stringify(user))
 
       props.handleLogin(user)
       setUsername('')
