@@ -41,7 +41,6 @@ const Search = () => {
         <button>Search</button>
       </form>
       {isLoaded && <SearchResults movies={movies} />}
-      <Notification message={error} />
     </div>
   );
 }
