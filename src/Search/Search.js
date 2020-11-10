@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import SearchResults from './SearchResults';
-import axios from "axios";
+import Notification from '../components/Notification';
+import omdbService from '../services/omdb';
 
 const Search = () => {
   const placeholder = 'Search for a movie';
-  const apiKey = 'e9b51b88'; //omdb api key. 100,000 requests per day. 
   const [search, setSearch] = useState('');
   const [movies, setMovies] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -13,12 +13,8 @@ const Search = () => {
 
   const movieRequest = async() => {
     try {
-      const result = await axios({
-        method: 'get',
-        url: `http://www.omdbapi.com/?s=${search}&apikey=${apiKey}`,
-      });
-      const resultjson = await result.data;
-      setMovies(resultjson.Search);
+      const result = await omdbService.omdbSearch(search);
+      setMovies(result.data.Search);
       setIsLoaded(true);
     } catch (error) {
       setError(error);
@@ -45,6 +41,7 @@ const Search = () => {
         <button>Search</button>
       </form>
       {isLoaded && <SearchResults movies={movies} />}
+      <Notification message={error} />
     </div>
   );
 }
