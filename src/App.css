@@ -114,3 +114,13 @@
   width: 40px;
   cursor: pointer;
 }
+
+.recent-rating {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+.recent-ratings-header {
+  display: flex;
+  flex-direction: row;
+}
