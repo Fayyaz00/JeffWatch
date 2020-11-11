@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/api/ratings'
+const baseUrl = 'https://jeffwatch.herokuapp.com/api/ratings'
 
 let token = null
 
