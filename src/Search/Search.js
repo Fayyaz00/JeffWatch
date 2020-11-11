@@ -48,7 +48,9 @@ const Search = () => {
             </div>
           </div>
         </div>
-        <button className="button is-info">Search</button>
+        <div className="block">
+          <button className="button is-info">Search</button>
+        </div>
         
       </form>
       {isLoaded && <SearchResults movies={movies} />}

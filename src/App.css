@@ -41,6 +41,10 @@
   text-align: center;
 }
 
+#fixed-height {
+  height: 50px;
+}
+
 .center {
   text-align: center;
 }
