@@ -16,7 +16,7 @@ const MovieRating = ({ initialRating, movieId }) => {
   const updateRating = async (movieId, rating) => {
     try {
       setIsLoading(true)
-      if (!initialRating) {
+      if (!myInitialRating) {
         await ratingsService.createRating(movieId, rating)
       } else {
         await ratingsService.updateRating(movieId, rating)
