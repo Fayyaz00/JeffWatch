@@ -67,9 +67,8 @@ function Movie({ user, id }) {
           </div>
           <div className="is-family-sans-serif">
             <div className="movie-body">
-              {user && <MovieRating initialRating={myRating} movieId={id} />}
               <div className="small-margin">
-              {user && <MovieRating />}
+                {user && <MovieRating initialRating={myRating} movieId={id} />}
               </div>
               <div className="small-margin">
                 <p><strong>Average rating:</strong> Vampire Holmes/10</p>
@@ -78,22 +77,22 @@ function Movie({ user, id }) {
                 <p><strong>Number of ratings:</strong> 69</p>
               </div>
               <div className="small-margin">
-              <p className="movie-release">{movie.Released}</p>
+                <p className="movie-release">{movie.Released}</p>
               </div>
               <div className="small-margin">
                 <p><strong>Runtime:</strong> {movie.Runtime}</p>
               </div>
               <div className="small-margin">
-              <p className="movie-director"><strong>Director:</strong> {movie.Director}</p>
+                <p className="movie-director"><strong>Director:</strong> {movie.Director}</p>
               </div>
               <div className="small-margin">
-              <p className="movie-writer"><strong>Writer:</strong> {movie.Writer}</p>
+                <p className="movie-writer"><strong>Writer:</strong> {movie.Writer}</p>
               </div>
               <div className="small-margin">
-              <p className="movie-actors"><strong>Actors:</strong> {movie.Actors}</p>
+                <p className="movie-actors"><strong>Actors:</strong> {movie.Actors}</p>
               </div>
               <div className="small-margin">
-              <p onClick={() => setPlot(movie.Plot)}>{plot}</p>
+                <p onClick={() => setPlot(movie.Plot)}>{plot}</p>
               </div>
             </div>
             <div className="small-margin">
