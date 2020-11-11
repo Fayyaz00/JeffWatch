@@ -4,7 +4,7 @@ import MovieCard from './MovieCard';
 const SearchResults = ({ movies }) => {
 
   return (
-    <div>
+    <div className="margin-breaker">
       {!movies || movies.length === 0 ? (
         <h1>No Movies Found</h1>
       ) : (

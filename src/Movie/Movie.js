@@ -68,16 +68,37 @@ function Movie({ user, id }) {
           <div className="is-family-sans-serif">
             <div className="movie-body">
               {user && <MovieRating initialRating={myRating} movieId={id} />}
+              <div className="small-margin">
+              {user && <MovieRating />}
+              </div>
+              <div className="small-margin">
+                <p><strong>Average rating:</strong> Vampire Holmes/10</p>
+              </div>
+              <div className="small-margin">
+                <p><strong>Number of ratings:</strong> 69</p>
+              </div>
+              <div className="small-margin">
               <p className="movie-release">{movie.Released}</p>
-              <p className="movie-director">{`Director: ${movie.Director}`}</p>
-              <p className="movie-writer">{`Writer: ${movie.Writer}`}</p>
-              <p className="movie-actors">{`Actors: ${movie.Actors}`}</p>
+              </div>
+              <div className="small-margin">
+                <p><strong>Runtime:</strong> {movie.Runtime}</p>
+              </div>
+              <div className="small-margin">
+              <p className="movie-director"><strong>Director:</strong> {movie.Director}</p>
+              </div>
+              <div className="small-margin">
+              <p className="movie-writer"><strong>Writer:</strong> {movie.Writer}</p>
+              </div>
+              <div className="small-margin">
+              <p className="movie-actors"><strong>Actors:</strong> {movie.Actors}</p>
+              </div>
+              <div className="small-margin">
               <p onClick={() => setPlot(movie.Plot)}>{plot}</p>
+              </div>
             </div>
-            <div className="boring-labels">
-              <p>{`Country: ${movie.Country} Rated: ${movie.Rated}`}</p>
+            <div className="small-margin">
+              <p><strong>Country:</strong> {movie.Country} <strong>Rated:</strong> {movie.Rated}</p>
             </div>
-            <p>{`id: ${id}`}</p>
           </div>
         </div>
       </div>
