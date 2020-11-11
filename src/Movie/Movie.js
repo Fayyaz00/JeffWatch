@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import MovieRating from '../components/MovieRating'
 import omdbService from '../services/omdb';
-import ClipLoader from 'react-spinners/ClipLoader'
+import ratingsService from '../services/ratings';
+import ClipLoader from 'react-spinners/ClipLoader';
 import 'bulma/css/bulma.css';
 
 
@@ -9,11 +10,15 @@ function Movie({ user, id }) {
 
   const [isLoading, setIsLoading] = useState(true)
   const [movie, setMovie] = useState("");
-  const [plot, setPlot] = useState("Click to reveal plot")
+  const [plot, setPlot] = useState("Click to reveal plot");
+  const [myRating, setMyRating] = useState(null);
 
   useEffect(() => {
     fetchMovie(id)
-  }, [id])
+    if (user) {
+      fetchMyRating(id)
+    }
+  }, [id, user])
 
   const fetchMovie = async (id) => {
     try {
@@ -25,6 +30,19 @@ function Movie({ user, id }) {
       setIsLoading(false)
     }
   };
+
+  const fetchMyRating = async (id) => {
+    try {
+      const result = await ratingsService.getRating(id)
+      let rating = null
+      if (result.status === 200) {
+        rating = result.data.rating
+      }
+      setMyRating(rating)
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     isLoading 
@@ -49,7 +67,7 @@ function Movie({ user, id }) {
           </div>
           <div className="is-family-sans-serif">
             <div className="movie-body">
-              {user && <MovieRating />}
+              {user && <MovieRating initialRating={myRating} movieId={id} />}
               <p className="movie-release">{movie.Released}</p>
               <p className="movie-director">{`Director: ${movie.Director}`}</p>
               <p className="movie-writer">{`Writer: ${movie.Writer}`}</p>

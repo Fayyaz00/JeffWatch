@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'https://jeffwatch.herokuapp.com/api/ratings'
+const baseUrl = 'http://localhost:3001/api/ratings'
 
 let token = null
 
@@ -23,12 +23,11 @@ const createRating = async (movie, rating) => {
 const getRating = async (movie) => {
   const config = {
     headers: { Authorization: token },
-    data: {
-      movie,
-    },
   }
 
-  return await axios.get(baseUrl, config)
+  const url = baseUrl + `/${movie}`
+
+  return await axios.get(url, config)
 }
 
 const updateRating = async (movie, rating) => {
