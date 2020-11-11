@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import MovieRating from '../components/MovieRating'
+import MovieRating from './MovieRating'
 import omdbService from '../services/omdb';
 import ratingsService from '../services/ratings';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -14,10 +14,12 @@ function Movie({ user, id }) {
   const [myRating, setMyRating] = useState(null);
 
   useEffect(() => {
+    let isMounted = true
     fetchMovie(id)
     if (user) {
       fetchMyRating(id)
     }
+    return () => {isMounted = false}
   }, [id, user])
 
   const fetchMovie = async (id) => {

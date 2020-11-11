@@ -11,8 +11,11 @@ const MovieRating = ({ initialRating, movieId }) => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    let isMounted = true
     setMyInitialRating(initialRating)
     setHasRating(initialRating ? true : false)
+
+    return () => {isMounted = false}
   }, [initialRating])
 
   const updateRating = async (movieId, rating) => {
