@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import Notification from '../components/Notification'
 import loginService from '../services/login'
+import { navigate } from '@reach/router'
 
-function Login(props) {
+const Login = ({ handleLogin }) => {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -16,9 +17,8 @@ function Login(props) {
 
       window.localStorage.setItem('loggedJeffUser', JSON.stringify(user))
 
-      props.handleLogin(user)
-      setUsername('')
-      setPassword('')
+      handleLogin(user)
+      await navigate('/')
     } catch (exception) {
       setErrorMessage('Wrong credentials')
       setTimeout(() => {
@@ -29,6 +29,7 @@ function Login(props) {
 
   return (
     <div className="Log-On">
+      <h1>Log in</h1>
       <Notification message={errorMessage}/>
       <form onSubmit={handleSubmit}>
         <div className="username-form">
@@ -39,7 +40,6 @@ function Login(props) {
               value={username}
               name="username" 
               onChange={({ target }) => setUsername(target.value)}
-              minLength="3" 
               required 
             />
           </label>
@@ -52,7 +52,6 @@ function Login(props) {
               value={password}
               name="password" 
               onChange={({ target }) => setPassword(target.value)}
-              minLength="6" 
               required 
             />
           </label>

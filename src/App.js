@@ -27,15 +27,20 @@ function App() {
     ratingsService.setToken(user.token)
   }
 
+  const handleLogout = () => {
+    setUser(null)
+    window.localStorage.removeItem('loggedJeffUser')
+  }
+
   return (
     <div id="app">
-      <NavBar user={user} />
+      <NavBar user={user} handleLogout={handleLogout} />
 
       <Router>
         <Search path="/" />
         <Movie path="/movie/:id" user={user}/>
         <Login path="/login" handleLogin={handleLogin}/>
-        <SignUp path="/signup" />
+        <SignUp path="/signup" handleLogin={handleLogin} />
         <Charts path="/charts" /> 
         <Profile path="/user/:user" />
       </Router>
