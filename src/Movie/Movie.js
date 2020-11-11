@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import MovieRating from './MovieRating'
 import omdbService from '../services/omdb';
 import ratingsService from '../services/ratings';
+import moviesService from '../services/movies';
 import ClipLoader from 'react-spinners/ClipLoader';
 import 'bulma/css/bulma.css';
 
@@ -12,6 +13,8 @@ function Movie({ user, id }) {
   const [movie, setMovie] = useState("");
   const [plot, setPlot] = useState("Click to reveal plot");
   const [myRating, setMyRating] = useState(null);
+  const [jeffWatchRating, setJeffWatchRating] = useState(null)
+  const [jeffWatchRates, setJeffWatchRates] = useState(null)
 
   useEffect(() => {
     let isMounted = true
@@ -19,6 +22,7 @@ function Movie({ user, id }) {
     if (user) {
       fetchMyRating(id)
     }
+    fetchJeffWatchData(id)
     return () => {isMounted = false}
   }, [id, user])
 
@@ -42,7 +46,23 @@ function Movie({ user, id }) {
       }
       setMyRating(rating)
     } catch (error) {
-      console.error(error);
+      console.error(error)
+    }
+  }
+
+  const fetchJeffWatchData = async (id) => {
+    try {
+      const result = await moviesService.getMovieById(id)
+      if (result.status === 200) {
+        if (result.data.avgRating) {
+          setJeffWatchRating(result.data.avgRating)
+        }
+        if (result.data.numRatings) {
+          setJeffWatchRates(result.data.numRatings)
+        }
+      }
+    } catch (error) {
+      
     }
   }
 
@@ -72,12 +92,11 @@ function Movie({ user, id }) {
               <div className="small-margin">
                 {user && <MovieRating initialRating={myRating} movieId={id} />}
               </div>
-              <div className="small-margin">
-                <p><strong>Average rating:</strong> Vampire Holmes/10</p>
-              </div>
-              <div className="small-margin">
-                <p><strong>Number of ratings:</strong> 69</p>
-              </div>
+              {jeffWatchRating && jeffWatchRates &&
+                <div className="small-margin">
+                  <p><strong>{jeffWatchRating}</strong> / 5.0 from <strong>{jeffWatchRates}</strong> ratings</p>
+                </div>
+              }
               <div className="small-margin">
                 <p className="movie-release">{movie.Released}</p>
               </div>
