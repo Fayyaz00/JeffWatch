@@ -7,20 +7,23 @@ const MovieRating = ({ initialRating, movieId }) => {
   const [newRating, setNewRating] = useState(null)
   const [myRating, setMyRating] = useState(null)
   const [myInitialRating, setMyInitialRating] = useState(initialRating)
+  const [hasRating, setHasRating] = useState(initialRating ? true : false)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setMyInitialRating(initialRating)
+    setHasRating(initialRating ? true : false)
   }, [initialRating])
 
   const updateRating = async (movieId, rating) => {
     try {
       setIsLoading(true)
-      if (!myInitialRating) {
+      if (!hasRating) {
         await ratingsService.createRating(movieId, rating)
       } else {
         await ratingsService.updateRating(movieId, rating)
       }
+      setHasRating(true)
       setIsLoading(false)
       setMyRating(rating)
     } catch (error) {
@@ -35,6 +38,7 @@ const MovieRating = ({ initialRating, movieId }) => {
       await ratingsService.deleteRating(movieId)
       setMyRating(null)
       setMyInitialRating(null)
+      setHasRating(false)
       setIsLoading(false)
     } catch (error) {
       console.error(error)
