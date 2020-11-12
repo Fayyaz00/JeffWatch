@@ -12,7 +12,7 @@ const Charts = () => {
   const getChart = async () => {
     try {
       const result = await chartsService.getChart()
-      setMovies(result)
+      setMovies(result.sort((a,b) => b.avgRating - a.avgRating || b.numRatings - a.numRatings))
     } catch {
 
     }
