@@ -2,15 +2,19 @@ import { useEffect, useState } from 'react'
 import { Link } from '@reach/router'
 import Rating from 'react-rating'
 
-const RecentRatings = ({ ratings }) => {
-  const sortedRatings = ratings.sort((a,b) => new Date(b.date) - new Date(a.date))
+const RecentRatings = ({ ratings, title }) => {
+  const [sortedRatings, setSortedRatings] = useState([])
   const maxPage = Math.floor((ratings.length - 1) / 10)
   const [page, setPage] = useState(0)
   const [displayedRatings, setDisplayedRatings] = useState(sortedRatings.slice(page*10, (page+1)*10))
 
   useEffect(() => {
     setDisplayedRatings(sortedRatings.slice(page*10, (page+1)*10))
-  }, [page])
+  }, [page, sortedRatings])
+
+  useEffect(() => {
+    setSortedRatings(ratings.sort((a,b) => new Date(b.date) - new Date(a.date)))
+  }, [ratings])
 
   const previousButton = () => {
     setPage(page - 1)
@@ -25,14 +29,14 @@ const RecentRatings = ({ ratings }) => {
     ? 
     <div className="recent-ratings">
       <div className="recent-ratings-header">
-        <h2>Recent Ratings</h2>
+        <h2>{title}</h2>
       </div>
       <p>No recent ratings</p>
     </div> 
     :
     <div className="recent-ratings">
       <div className="recent-ratings-header">
-        <h2>Recent Ratings</h2>
+        <h2>{title}</h2>
         <button 
           disabled={page === 0}
           onClick={previousButton}

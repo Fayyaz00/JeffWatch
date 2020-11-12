@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import usersService from '../services/users'
 import RecentRatings from './RecentRatings'
+import RatingHistogram from './RatingHistogram'
 import ClipLoader from 'react-spinners/ClipLoader'
 
 const Profile = ({ user }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [userData, setUserData] = useState(null)
+  const [specificRatings, setSpecificRatings] = useState(null)
 
   useEffect(() => {
     fetchUserData(user)
@@ -24,6 +26,12 @@ const Profile = ({ user }) => {
     }
   }
 
+  const showSpecificRatings = (rating) => {
+    const specificRatings = userData.ratings.filter(r => r.rating === rating)
+    console.log(specificRatings)
+    setSpecificRatings(<RecentRatings ratings={specificRatings} title={`${user}'s ${rating} star ratings`}/>)
+  }
+
   return (
     <div className="profile-page">
       {(userData && userData.username) ? 
@@ -35,7 +43,9 @@ const Profile = ({ user }) => {
           css={{display: 'block', margin: '0 auto'}}
           loading={isLoading}
       />
-      {userData && <RecentRatings ratings={userData.ratings}/>}
+      {userData && <RatingHistogram ratings={userData.ratings}  showSpecificRatings={showSpecificRatings} />}
+      {specificRatings}
+      {userData && <RecentRatings ratings={userData.ratings} title={`${user}'s recent ratings`}/>}
     </div>
   )
 }
