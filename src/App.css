@@ -75,8 +75,14 @@
   text-align: right;
 }
 
-#blue-background {
+.log-in-container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.isCenter {
   /* background-color: lightblue; */
+  margin: 0 auto;
 }
 
 #meta-div {

@@ -28,37 +28,58 @@ const Login = ({ handleLogin }) => {
   }
 
   return (
-    <div className="Log-On">
-      <h1>Log in</h1>
+    <section className="hero is-info is-fullheight">
+    <div className="hero-body">
+    <div className="isCenter">
+    <div className="container">
+      <div>
       <Notification message={errorMessage}/>
+      <div className="box">
       <form onSubmit={handleSubmit}>
-        <div className="username-form">
-          <label>
-            Username:
-            <input 
-              type="text"
-              value={username}
-              name="username" 
-              onChange={({ target }) => setUsername(target.value)}
-              required 
-            />
-          </label>
+        <div className="field">
+          <label className="label">Username</label>
+            <div className="control has-icons-left has-icons-right">
+              <input 
+                className="input" 
+                type="text" 
+                value={username}
+                name="username"
+                onChange={({target}) => setUsername(target.value)}
+                required
+                />
+            <span className="icon is-small is-left">
+              <i className="fas fa-user"></i>
+            </span>
+            </div>
         </div>
-        <div className="password-form">
-          <label>
-            Password:
+        <div className="field">
+          <label className="label">Password</label>
+            <div className="control has-icons-left has-icons-right">
             <input 
+              className="input"
               type="password"
               value={password}
               name="password" 
               onChange={({ target }) => setPassword(target.value)}
               required 
             />
-          </label>
+            <span className="icon is-small is-left">
+              <i className="fas fa-lock"></i>
+            </span>
+            </div>  
         </div>
-        <button type="submit">login</button>
+        <div className="field is-grouped">
+          <div className="control">
+            <button className="button is-info" type="submit">Login</button>
+          </div>
+        </div>
       </form>
+      </div>
+      </div>
     </div>
+    </div>
+    </div>
+    </section>
   )
 }
 
