@@ -39,16 +39,21 @@ const RatingHistogram = ({ ratings, showSpecificRatings }) => {
     const g = svg.selectAll('g')
       .data(formattedData).enter().append('g')
       .on('click', function() {
-        console.log('clicked')
         showSpecificRatings(+this.children[1].innerHTML)
       })
       .on('mouseover', function(d,i) {
         d3.select(this)
           .style('cursor', 'pointer')
+        
+        d3.select(this.children[2])
+          .style('visibility', 'visible')
       })
       .on('mouseout', function(d,i) {
         d3.select(this)
           .style('cursor', 'default')    
+
+        d3.select(this.children[2])
+          .style('visibility', 'hidden')
       })
 
     const rects = g.append('rect')
@@ -68,14 +73,23 @@ const RatingHistogram = ({ ratings, showSpecificRatings }) => {
       .on('mouseout', function(d,i) {
         d3.select(this)
           .attr('opacity', '1')  
-          .style('cursor', 'default')    
+          .style('cursor', 'default')
       })
 
     const text = g.append('text')
       .text((d,i) => (((10 - i) / 2)).toFixed(1))
-      .attr('dy', '1.15em')
+      .attr('dy', '1.2em')
       .attr('y', (d,i) => yScale(i))
       .style('font-weight', 'bold')
+
+    const tooltip = g.append('text')
+      .text((d,i) => d)
+      .attr('y', (d,i) => yScale(i))
+      .attr('dy', '1.2em')
+      .attr('dx', 35)
+      .style('font-weight', 'bold')
+      .style('visibility', 'hidden')
+
 
 
 
