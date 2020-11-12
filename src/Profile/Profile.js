@@ -28,7 +28,6 @@ const Profile = ({ user }) => {
 
   const showSpecificRatings = (rating) => {
     const specificRatings = userData.ratings.filter(r => r.rating === rating)
-    console.log(specificRatings)
     setSpecificRatings(<RecentRatings ratings={specificRatings} title={`${user}'s ${rating} star ratings`}/>)
   }
 

@@ -13,7 +13,6 @@ const Charts = () => {
     try {
       const result = await chartsService.getChart()
       setMovies(result)
-      console.log(movies)
     } catch {
 
     }
