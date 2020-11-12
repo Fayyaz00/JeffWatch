@@ -130,3 +130,34 @@
   display: flex;
   flex-direction: row;
 }
+
+.charts {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.chart-list {
+  background-color: #efefef;
+  padding: 20px;
+}
+
+.chart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 220px;
+  border-bottom: 1px solid black;
+}
+
+.chart-item a {
+  height: 200px;
+  align-self: center;
+}
+
+.chart-item-info {
+  width: 50%;
+}
+
+.chart-item img {
+  height: 200px;
+}
