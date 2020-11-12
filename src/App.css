@@ -151,6 +151,7 @@
 
 .chart-item a {
   height: 200px;
+  width: 135px;
   align-self: center;
 }
 
@@ -159,5 +160,6 @@
 }
 
 .chart-item img {
+  width: 135px;
   height: 200px;
 }
