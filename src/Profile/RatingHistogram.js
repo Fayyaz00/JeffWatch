@@ -42,6 +42,14 @@ const RatingHistogram = ({ ratings, showSpecificRatings }) => {
         console.log('clicked')
         showSpecificRatings(+this.children[1].innerHTML)
       })
+      .on('mouseover', function(d,i) {
+        d3.select(this)
+          .style('cursor', 'pointer')
+      })
+      .on('mouseout', function(d,i) {
+        d3.select(this)
+          .style('cursor', 'default')    
+      })
 
     const rects = g.append('rect')
       .attr('y', (d,i) => yScale(i))
@@ -55,10 +63,12 @@ const RatingHistogram = ({ ratings, showSpecificRatings }) => {
       .on('mouseover', function(d,i) {
         d3.select(this)
           .attr('opacity', '.75')
+          .style('cursor', 'pointer')
       })
       .on('mouseout', function(d,i) {
         d3.select(this)
-          .attr('opacity', '1')      
+          .attr('opacity', '1')  
+          .style('cursor', 'default')    
       })
 
     const text = g.append('text')
