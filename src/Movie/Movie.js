@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import MovieRating from './MovieRating'
+import RecentMovieRatings from './RecentMovieRatings'
 import omdbService from '../services/omdb';
 import ratingsService from '../services/ratings';
 import moviesService from '../services/movies';
@@ -15,6 +16,7 @@ function Movie({ user, id }) {
   const [myRating, setMyRating] = useState(null);
   const [jeffWatchRating, setJeffWatchRating] = useState(null)
   const [jeffWatchRates, setJeffWatchRates] = useState(null)
+  const [recentRatings, setRecentRatings] = useState([])
 
   useEffect(() => {
     let isMounted = true
@@ -59,6 +61,9 @@ function Movie({ user, id }) {
         }
         if (result.data.numRatings) {
           setJeffWatchRates(result.data.numRatings)
+        }
+        if (result.data.ratings) {
+          setRecentRatings(result.data.ratings)
         }
       }
     } catch (error) {
@@ -122,6 +127,7 @@ function Movie({ user, id }) {
           </div>
         </div>
       </div>
+      {<RecentMovieRatings ratings={recentRatings}/>}
     </div>
   )
 };

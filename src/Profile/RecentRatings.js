@@ -48,13 +48,13 @@ const RecentRatings = ({ ratings, title }) => {
       </div>
       {displayedRatings.map(r => (
         <div className="recent-rating" key={r.id}>
+          <p>{(new Date(r.date)).toLocaleString().split(', ')[0]}</p>
           <Rating 
             initialRating={r.rating}
             readonly
             emptySymbol="fa fa-star-o"
             fullSymbol="fa fa-star"
           />
-          <p>{(new Date(r.date)).toLocaleString().split(', ')[0]}</p>
           <Link to={`/movie/${r.movie.imdbId}`}><h3>{r.movie.title}</h3></Link>
         </div>
       ))}
