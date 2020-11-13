@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import usersService from '../services/users'
 import RecentRatings from './RecentRatings'
 import RatingHistogram from './RatingHistogram'
+import GenreBubbleChart from './GenreBubbleChart'
 import ClipLoader from 'react-spinners/ClipLoader'
 
 const Profile = ({ user }) => {
@@ -45,6 +46,7 @@ const Profile = ({ user }) => {
       {userData && <RatingHistogram ratings={userData.ratings}  showSpecificRatings={showSpecificRatings} />}
       {specificRatings}
       {userData && <RecentRatings ratings={userData.ratings} title={`${user}'s recent ratings`}/>}
+      {userData && <GenreBubbleChart ratings={userData.ratings} />}
     </div>
   )
 }
