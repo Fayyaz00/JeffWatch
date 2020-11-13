@@ -85,14 +85,19 @@ const SignUp = ({ handleLogin }) => {
   }
 
   return (
+  <section className="hero is-info is-fullheight">
+    <div className="hero-body">
+    <div className="isCenter">
     <div className="SignUp">
-      <h1>Sign Up</h1>
-      <Notication message={errorMessage} />
+    <div className="container">
+      <div className="box">
       <form onSubmit={handleSubmit}>
+        <div className="field">
         <div className="username-form">
-          <label>
-            Username
+          <label className="label">Username</label>
+          <div className="control has-icons-left">
             <input 
+              className="input"
               type="text" 
               value={username}
               name="username" 
@@ -100,12 +105,18 @@ const SignUp = ({ handleLogin }) => {
               minLength="3" 
               required 
             />
-          </label>
+            <span className="icon is-small is-left">
+              <i className="fas fa-user"></i>
+            </span>
         </div>
+        </div>
+        </div>
+        <div className="field">
         <div className="password-form">
-          <label>
-            Password
+          <label className="label">Password</label>
+          <div className="control has-icons-left">
             <input 
+              className="input"
               type="password"
               value={password}
               name="password" 
@@ -113,12 +124,18 @@ const SignUp = ({ handleLogin }) => {
               minLength="6" 
               required 
             />
-          </label>
+            <span className="icon is-small is-left">
+              <i className="fas fa-lock"></i>
+            </span>
+          </div>
         </div>
+        </div>
+        <div className="field">
         <div className="password-form">
-          <label>
-            Verify Password
+          <label className="label">Verify Password</label>
+            <div className="control has-icons-left">
             <input 
+              className="input"
               type="password"
               value={verifyPass}
               name="password" 
@@ -126,11 +143,25 @@ const SignUp = ({ handleLogin }) => {
               minLength="6" 
               required 
             />
-          </label>
+            <span className="icon is-small is-left">
+              <i className="fas fa-lock"></i>
+            </span>
+            <p className="help is-danger">
+            {errorMessage}
+            </p>
+            </div>
         </div>
-        <button type="submit">Sign Up</button>
+        </div>
+        <div className="field is-grouped">
+        <button className="button is-info" type="submit">Sign Up</button>
+        </div>
       </form>
+      </div>
     </div>
+    </div>
+    </div>
+    </div>
+  </section>
   )
 }
 
