@@ -1,11 +1,11 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as d3 from 'd3'
 
 const RatingHistogram = ({ ratings, showSpecificRatings }) => {
-  const d3Container = useRef(null)
-  const width = window.innerWidth * .6
+  let d3Container = useRef(null)
+  const width = window.innerWidth < 700 ? window.innerWidth : window.innerWidth * .6
   const height = 350
-  
+
   useEffect(() => {
     
     if (!ratings || !d3Container.current) return
@@ -34,7 +34,10 @@ const RatingHistogram = ({ ratings, showSpecificRatings }) => {
     const colorScale = d3.scaleOrdinal()
       .domain(formattedData.keys())
       .range(colors)
+
     const svg = d3.select(d3Container.current)
+
+    svg.selectAll('*').remove()
 
     const g = svg.selectAll('g')
       .data(formattedData).enter().append('g')
@@ -59,22 +62,27 @@ const RatingHistogram = ({ ratings, showSpecificRatings }) => {
     const rects = g.append('rect')
       .attr('y', (d,i) => yScale(i))
       .attr('x', 30)
-      .attr('width', d => xScale(d))
+      .attr('width', 0)
       .attr('height', rectHeight)
       .attr('fill', (d,i) => colorScale(i))
       .attr('stroke', 'black')
       .attr('stroke-width', 2)
-      .attr('opacity', '1')
+      .attr('opacity', 0)
       .on('mouseover', function(d,i) {
         d3.select(this)
-          .attr('opacity', '.75')
           .style('cursor', 'pointer')
+          .transition('20')
+          .attr('opacity', '.75')
       })
       .on('mouseout', function(d,i) {
         d3.select(this)
-          .attr('opacity', '1')  
           .style('cursor', 'default')
+          .transition('20')
+          .attr('opacity', '1')  
       })
+      .transition().duration(750)
+        .attr('width', d => xScale(d))
+        .attr('opacity', 1)
 
     const text = g.append('text')
       .text((d,i) => (((10 - i) / 2)).toFixed(1))
@@ -91,10 +99,7 @@ const RatingHistogram = ({ ratings, showSpecificRatings }) => {
       .style('visibility', 'hidden')
 
 
-
-
-
-  }, [ratings, width])
+  }, [ratings, width, showSpecificRatings])
 
   return (
     <div style={{width: width, border: '1px dashed'}}>
