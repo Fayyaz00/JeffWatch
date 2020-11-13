@@ -20,7 +20,7 @@ const Login = ({ handleLogin }) => {
       handleLogin(user)
       await navigate('/')
     } catch (exception) {
-      setErrorMessage('Wrong credentials')
+      setErrorMessage('Username or password incorrect')
       setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
@@ -33,7 +33,6 @@ const Login = ({ handleLogin }) => {
     <div className="isCenter">
     <div className="container">
       <div>
-      <Notification message={errorMessage}/>
       <div className="box">
       <form onSubmit={handleSubmit}>
         <div className="field">
@@ -66,8 +65,12 @@ const Login = ({ handleLogin }) => {
             <span className="icon is-small is-left">
               <i className="fas fa-lock"></i>
             </span>
-            </div>  
+            </div> 
+            <p className="help is-danger">
+            {errorMessage}
+            </p> 
         </div>
+        
         <div className="field is-grouped">
           <div className="control">
             <button className="button is-info" type="submit">Login</button>
