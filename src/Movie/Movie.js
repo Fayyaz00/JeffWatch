@@ -99,7 +99,7 @@ function Movie({ user, id }) {
               </div>
               {jeffWatchRating && jeffWatchRates &&
                 <div className="small-margin">
-                  <p><strong>{jeffWatchRating}</strong> / 5.0 from <strong>{jeffWatchRates}</strong> ratings</p>
+                  <p><strong>{jeffWatchRating.toFixed(2)}</strong> / 5.0 from <strong>{jeffWatchRates}</strong> ratings</p>
                 </div>
               }
               <div className="small-margin">

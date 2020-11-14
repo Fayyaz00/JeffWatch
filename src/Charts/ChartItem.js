@@ -11,7 +11,7 @@ const ChartItem = ({ movie }) => {
         <p>{genre.join(', ')}</p>
       </div>
       <div>
-        <p><strong>{avgRating}</strong> / 5.0 from <strong>{numRatings}</strong> ratings</p>
+        <p><strong>{avgRating.toFixed(2)}</strong> / 5.0 from <strong>{numRatings}</strong> ratings</p>
       </div>
     </div>
   )
