@@ -143,7 +143,7 @@ const GenreBubbleChart = ({ ratings }) => {
   }, [formattedData, dod3stuff, defaultData, showRatingWeighting, weightedData])
 
   return (
-    <div style={{width: width, height: height, border: '1px dashed'}}>
+    <div className="isCenter" style={{width: width, height: height, border: '1px dashed'}}>
       <h2>Genres</h2>
       <p>Shows the amount of movies watched for each genre. The larger the circle, the more movies. Clicking the checkbox will also take into account the users ratings of movies. This description needs to be improved.</p>
       <input 

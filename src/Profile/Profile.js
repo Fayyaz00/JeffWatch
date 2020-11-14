@@ -35,7 +35,7 @@ const Profile = ({ user }) => {
   return (
     <div className="profile-page">
       {(userData && userData.username) ? 
-        <h1>{userData.username}</h1> :
+        <h1 className="title is-family-monospace has-text-info has-text-centered">{userData.username}'s Profile</h1> :
         <h1>User not found</h1>
       }
       <ClipLoader 

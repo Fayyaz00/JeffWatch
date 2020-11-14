@@ -34,7 +34,7 @@ const RecentRatings = ({ ratings, title }) => {
       <p>No recent ratings</p>
     </div> 
     :
-    <div className="recent-ratings">
+    <div className="blue">
       <div className="recent-ratings-header">
         <h2>{title}</h2>
         <button 
@@ -47,7 +47,7 @@ const RecentRatings = ({ ratings, title }) => {
         >next</button>
       </div>
       {displayedRatings.map(r => (
-        <div className="recent-rating" key={r.id}>
+        <div className="border-rating-card" key={r.id}>
           <p>{(new Date(r.date)).toLocaleString().split(', ')[0]}</p>
           <Rating 
             initialRating={r.rating}

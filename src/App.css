@@ -76,12 +76,22 @@
 }
 
 .log-in-container {
-  margin: 0 auto;
   text-align: center;
+  align-self: center;
+  align-content: center;
 }
 
 .isCenter {
   /* background-color: lightblue; */
+  margin: 0 auto;
+}
+
+.border-rating-card {
+  background-color: rgb(192, 204, 223);
+  margin: 5px;
+}
+
+.blue {
   margin: 0 auto;
 }
 
