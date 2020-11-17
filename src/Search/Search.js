@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import SearchResults from './SearchResults';
 import ClipLoader from 'react-spinners/ClipLoader'
 import omdbService from '../services/omdb';
+import { debounce } from 'lodash'
 
 const Search = () => {
   const placeholder = 'Search for a movie';
@@ -11,11 +12,11 @@ const Search = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
 
-
-  const movieRequest = async () => {
+  const movieRequest = async (mySearch) => {
+    console.log(mySearch)
     try {
       setIsLoading(true);
-      const result = await omdbService.omdbSearch(search);
+      const result = await omdbService.omdbSearch(mySearch);
       setMovies(result.data.Search);
       setIsLoading(false);
       setIsLoaded(true);
@@ -25,14 +26,14 @@ const Search = () => {
     }
   }
 
+  
+  const debouncedSearch = useCallback(debounce(mySearch => movieRequest(mySearch), 750), [])
+
   return (
     <div className="center">
       
       <form 
-        onSubmit={e => {
-          e.preventDefault();
-          movieRequest();
-        }}
+        onSubmit={e => {e.preventDefault();}}
       >
         <div className="columns">
           <div className="column is-two-thirds is-offset-2">
@@ -42,14 +43,15 @@ const Search = () => {
                   id="search" 
                   placeholder={placeholder}
                   value={search}
-                  onChange={e => setSearch(e.target.value)} 
+                  onChange={e => {
+                    setSearch(e.target.value);
+                    setIsLoading(true);
+                    debouncedSearch(e.target.value);
+                  }} 
                 />
               </label>
             </div>
           </div>
-        </div>
-        <div className="block">
-          <button className="button is-info">Search</button>
         </div>
         
       </form>
