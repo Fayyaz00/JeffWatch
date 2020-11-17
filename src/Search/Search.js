@@ -13,7 +13,6 @@ const Search = () => {
   const [error, setError] = useState(null);
 
   const movieRequest = async (mySearch) => {
-    console.log(mySearch)
     try {
       setIsLoading(true);
       const result = await omdbService.omdbSearch(mySearch);
