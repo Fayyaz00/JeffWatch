@@ -38,14 +38,18 @@ const RecentRatings = ({ ratings, title }) => {
     <div className="blue">
       <div className="recent-ratings-header">
         <h2>{title}</h2>
-        <button 
-          disabled={page === 0}
-          onClick={previousButton}
-        >previous</button>
-        <button 
-          disabled={page === maxPage}
-          onClick={nextButton}
-        >next</button>
+        <div>
+          <button 
+            className="button is-light"
+            disabled={page === 0}
+            onClick={previousButton}
+          >previous</button>
+          <button 
+            className="button is-light is-info"
+            disabled={page === maxPage}
+            onClick={nextButton}
+          >next</button>
+        </div>
       </div>
       {displayedRatings.map(r => (
         <div className="border-rating-card" key={r.id}>

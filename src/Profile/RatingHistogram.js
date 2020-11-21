@@ -102,8 +102,8 @@ const RatingHistogram = ({ ratings, showSpecificRatings }) => {
   }, [ratings, width, showSpecificRatings])
 
   return (
-    <div className="isCenter" style={{width: width, border: '1px dashed'}}>
-      <h2>Ratings: <strong>{ratings.length}</strong></h2>
+    <div className="isCenter" style={{width: width, border: '1px solid', padding: '5px'}}>
+      <h2><strong>Ratings: {ratings.length}</strong></h2>
       <svg
         className="d3-component"
         width={width}

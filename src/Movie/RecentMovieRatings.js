@@ -10,21 +10,11 @@ const RecentMovieRatings = ({ ratings }) => {
   }, [ratings])
 
   return (
-    ratings.length <= 0
-    ?
-    <div className="recent-ratings">
-      <div className="recent-ratings-header">
-        <h2>Recent Ratings</h2>
-      </div>
-      <p>No recent ratings</p>
-    </div>
-    :
-    <div className="recent-ratings">
-      <div className="recent-ratings-header">
-        <h2>Recent Ratings</h2>
-      </div>
-      {sortedRatings.map(r => (
-        <div className="recent-rating" key={r.user.username}>
+    <div className="recent-movie-ratings">
+      <h2>Recent Ratings</h2>
+      {ratings.length <= 0 ? <p>No recent Ratings</p> : 
+      sortedRatings.map(r => (
+        <div className="recent-movie-rating" key={r.user.username}>
           <p>{(new Date(r.date)).toLocaleString().split(', ')[0]}</p>
           <Rating 
             initialRating={r.rating}
