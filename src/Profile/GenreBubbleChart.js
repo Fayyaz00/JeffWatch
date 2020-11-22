@@ -143,7 +143,7 @@ const GenreBubbleChart = ({ ratings }) => {
   }, [formattedData, dod3stuff, defaultData, showRatingWeighting, weightedData])
 
   return (
-    <div className="isCenter" style={{width: width, height: height}}>
+    <div className="isCenter genre-chart" style={{width: width, height: height}}>
       <h2 className="subtitle" id="margin-fixer">Genres</h2>
       <p id="margin-fixer"> The bubble chart below displays different genres of movies. The larger the amount of ratings for one genre, as compared to others, the larger the circle becomes. Clicking
         on the checkbox below takes into account the average rating for movies with that genre, determined by the user.</p>

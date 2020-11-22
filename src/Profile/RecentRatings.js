@@ -14,6 +14,7 @@ const RecentRatings = ({ ratings, title }) => {
 
   useEffect(() => {
     setSortedRatings(ratings.sort((a,b) => new Date(b.date) - new Date(a.date)))
+    setPage(0)
   }, [ratings])
 
   const previousButton = () => {

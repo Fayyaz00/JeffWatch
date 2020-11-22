@@ -167,9 +167,19 @@
 .recent-rating {
   display: flex;
   flex-direction: row;
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 992px) {
+  .recent-rating {
+    width: 90%;
+  }
+}
+
+.recent-rating > * {
+  margin-right: 10px;
 }
 
 .blue-background {
@@ -197,14 +207,13 @@
 }
 
 .recent-ratings-header h2,
-.genre-chart h2,
 .recent-movie-ratings h2 {
   font-size: 1.2em;
   font-weight: bold;
 }
 
 .genre-chart {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .charts {
