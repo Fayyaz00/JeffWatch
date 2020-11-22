@@ -86,9 +86,16 @@
   margin: 0 auto;
 }
 
+.newline {
+  white-space: pre-line;
+}
+
+.separate {
+  margin-left: 5px;
+}
+
 .border-rating-card {
   background-color: rgb(192, 204, 223);
-  margin: 5px;
 }
 
 .blue {
@@ -130,15 +137,47 @@
   width: 40px;
   cursor: pointer;
 }
+#margin-fixer {
+  margin-bottom: 5px;
+}
 
+.right-margin-increase {
+  margin-right: 5px;
+}
 .recent-rating {
   display: flex;
   flex-direction: row;
   width: 70%;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 .recent-ratings-header {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
+}
+
+.blue-background {
+  background-color: white;
+  border-radius: 25px;
+  width: fit-content;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.outline-background {
+  margin: 0 auto;
+  background-color: #209cee;
+  border-radius: 25px;
+  padding-top: 10px;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .charts {
