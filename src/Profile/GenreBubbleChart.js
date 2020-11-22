@@ -143,18 +143,18 @@ const GenreBubbleChart = ({ ratings }) => {
   }, [formattedData, dod3stuff, defaultData, showRatingWeighting, weightedData])
 
   return (
-    <div className="genre-chart isCenter" style={{width: width, height: height}}>
-      <h2>Genres</h2>
-      <p>Shows the amount of movies watched for each genre. The larger the circle, the more movies. Apply the rating weighting to also take into account the users ratings of movies.</p>
-      <label htmlFor="showRatingWeighting" className="checkbox">
-        <input 
-          type="checkbox" 
-          checked={showRatingWeighting} 
-          id="showRatingWeighting"
-          onChange={handleShowRatingWeighting}
-        />
-        Apply Rating Weighting
-      </label>
+    <div className="isCenter" style={{width: width, height: height}}>
+      <h2 className="subtitle" id="margin-fixer">Genres</h2>
+      <p id="margin-fixer"> The bubble chart below displays different genres of movies. The larger the amount of ratings for one genre, as compared to others, the larger the circle becomes. Clicking
+        on the checkbox below takes into account the average rating for movies with that genre, determined by the user.</p>
+      <input 
+        className="right-margin-increase"
+        type="checkbox" 
+        checked={showRatingWeighting} 
+        id="showRatingWeighting"
+        onChange={handleShowRatingWeighting}
+      />
+      <label htmlFor="showRatingWeighting"><strong>Apply Average Rating Weight</strong></label>
       <svg 
         className="d3-bubbles"
         width={width}
