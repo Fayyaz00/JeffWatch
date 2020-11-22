@@ -173,7 +173,7 @@
 }
 
 .chart-list {
-  background-color: #efefef;
+  background: linear-gradient(to right,#e3e3e3,#ededed);
   padding: 20px;
 }
 
