@@ -25,6 +25,16 @@ const Search = () => {
     }
   }
 
+  const results = () => {
+    if (isLoading) {
+      return <ClipLoader 
+        size='150px'
+        css={{display: 'block', margin: '0 auto'}}
+      />
+    } else if (isLoaded) {
+      return <SearchResults movies={movies} />
+    }
+  }
   
   const debouncedSearch = useCallback(debounce(mySearch => movieRequest(mySearch), 750), [])
 
@@ -42,6 +52,7 @@ const Search = () => {
                   id="search" 
                   placeholder={placeholder}
                   value={search}
+                  autoComplete="off"
                   onChange={e => {
                     setSearch(e.target.value);
                     setIsLoading(true);
@@ -54,12 +65,7 @@ const Search = () => {
         </div>
         
       </form>
-      {isLoaded && <SearchResults movies={movies} />}
-      {isLoading && <ClipLoader 
-            size='150px'
-            css={{display: 'block', margin: '0 auto'}}
-          />}
-      
+      {results()}
     </div>
   );
 }

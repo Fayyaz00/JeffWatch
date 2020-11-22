@@ -14,16 +14,16 @@ const MovieCard = ({ id, title, year, poster }) => {
   }
   
   return (
-    <Link to={`/movie/${id}`}>
-    <section className="hero is-info">
-    <div className="container" id="centered">
-      <h2 className="title" id="blue-text">{title} ({year})</h2>
-      <div id="blue-background">
-      <img className="poster-size" src={image} alt={`${title} poster`}></img> 
+    <div className="container movie-card-search" id="centered">
+      <Link to={`/movie/${id}`}>
+        <h2 className="title" id="blue-text">{title} ({year})</h2>
+      </Link>
+      <div>
+      <Link to={`/movie/${id}`}>
+        <img className="poster-size" src={image} alt={`${title} poster`}></img> 
+      </Link>
       </div>
     </div>
-    </section>
-    </Link>
   );
 }
 
