@@ -21,7 +21,7 @@ const Charts = () => {
 
   return (
     <div className="charts">
-      <h1 className="title">Top Ratings from JeffWatch Users</h1>
+      <h1 className="subtitle has-text-centered">Top Ratings from JeffWatch Users</h1>
       <div className="chart-list">
         {movies.map(m => (
           <ChartItem 

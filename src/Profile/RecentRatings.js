@@ -35,24 +35,25 @@ const RecentRatings = ({ ratings, title }) => {
       <p>No recent ratings</p>
     </div> 
     :
-    <div className="blue">
+    <div className="recent-ratings">
       <div className="recent-ratings-header">
-        <h2>{title}</h2>
-        <div>
-          <button 
-            className="button is-light"
-            disabled={page === 0}
-            onClick={previousButton}
-          >previous</button>
-          <button 
-            className="button is-light is-info"
-            disabled={page === maxPage}
-            onClick={nextButton}
-          >next</button>
+        <h2 className="subtitle has-text-centered" id="margin-fixer">{title}</h2>
+        <div className="buttons is-centered">
+        <button
+          className="button is-info"
+          disabled={page === 0}
+          onClick={previousButton}
+        >Previous</button>
+        <button 
+          className="button is-info"
+          disabled={page === maxPage}
+          onClick={nextButton}
+        >Next</button>
         </div>
+        
       </div>
       {displayedRatings.map(r => (
-        <div className="border-rating-card" key={r.id}>
+        <div className="recent-rating" key={r.id}>
           <p>{(new Date(r.date)).toLocaleString().split(', ')[0]}</p>
           <Rating 
             initialRating={r.rating}

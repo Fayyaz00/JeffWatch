@@ -7,6 +7,7 @@ import Login from './Login/Login';
 import SignUp from './Login/SignUp';
 import Profile from './Profile/Profile';
 import Charts from './Charts/Charts';
+import NotFound from './NotFound';
 import ratingsService from './services/ratings';
 import './App.css';
 
@@ -43,6 +44,7 @@ function App() {
         <SignUp path="/signup" handleLogin={handleLogin} />
         <Charts path="/charts" /> 
         <Profile path="/user/:user" />
+        <NotFound default />
       </Router>
     </div>
   );
